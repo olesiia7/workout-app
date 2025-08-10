@@ -7,7 +7,7 @@
   - Exercise interface and mock shoulder exercises
   - Workout definitions (shoulders=1, glutes=2)  
   - Equipment types (0=no equipment, 1=single, 2=double)
-- [ ] Update `src/types.ts`:
+- [x] Update `src/types.ts`:
   - Import and use Exercise interface from mock data
   - Extend `Screen` types for timer and program screens
   - Add localStorage session data types
