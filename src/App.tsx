@@ -1,35 +1,36 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from 'react';
+import './App.css';
+import { WorkoutProvider, useWorkout } from './store/WorkoutContext';
+import Select from './pages/Select';
+import Program from './pages/Program';
+import Done from './pages/Done';
+
+const AppContent: React.FC = () => {
+  const { screen } = useWorkout();
+
+  switch (screen.name) {
+    case 'select':
+      return <Select />;
+    case 'program':
+      return <Program workoutId={screen.workoutId} />;
+    case 'done':
+      return <Done workoutId={screen.workoutId} />;
+    case 'timer':
+      // Timer component not implemented yet
+      return <div>Timer: {screen.seconds}s</div>;
+    default:
+      return <Select />;
+  }
+};
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <WorkoutProvider>
+      <div className="App">
+        <AppContent />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </WorkoutProvider>
+  );
 }
 
-export default App
+export default App;
