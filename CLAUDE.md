@@ -10,11 +10,20 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - `npm run lint` - Run ESLint on all files
 - `npm run preview` - Preview production build
 
+**IMPORTANT**
+- Never change or write code unless you are more than 70–80% confident in the solution.
+- Ask questions and request more context if you are less than 80% confident in the solution.
+- Document all of your code: create separate .md files and reference them from this instruction.
+
 **Note:** No test command is configured in package.json scripts.
 
 ## Requirements
 
 See `requirements.md` for complete application specifications, data structure, and implementation details.
+
+## Implementation Plan
+
+See `plan.md` for detailed phased implementation plan with tasks, dependencies, and timeline.
 
 ## Architecture
 

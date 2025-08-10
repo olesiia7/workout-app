@@ -3,7 +3,7 @@
 ## Tech Stack Recommendations
 - **State Management**: Keep current WorkoutContext pattern, extend for workout data
 - **Routing**: Continue with current screen-based navigation (simpler than React Router)
-- **Database**: Use localStorage with JSON for simplicity (no external dependencies)
+- **Database**: Supabase for workout programs, localStorage for session progress
 - **UI Language**: Russian for user interface
 
 ## Application Screens
@@ -28,7 +28,7 @@
 **Behavior:**
 - Click "Готово" → mark set completed, update progress
 - If rest time exists & not last set → Timer Screen
-- Weight +/- buttons → update weight in storage for next session
+- Weight +/- buttons → update weight in localStorage (sync to Supabase on workout completion)
 - Preserve progress if app closed/reopened
 
 ### 3. Done Screen
@@ -50,18 +50,31 @@
 
 ## Data Structure
 
-### Database Schema (to implement in localStorage)
+### Supabase Schema (existing)
 ```sql
 training_exercises:
 - id: number
 - name: string  
 - equipment_type: 1|2 (1=single equipment, 2=paired like dumbbells)
-- weight: number
+- weight: number (updated directly on weight changes)
 - order: number (exercise order in workout)
 - sets: number
 - reps: number  
 - relax_between: number|null (rest seconds)
 - workout: 1|2 (1=shoulders, 2=glutes)
+```
+
+### localStorage Schema (session only)
+```typescript
+"current-workout" = {
+  workoutId: 1|2,
+  exercises: {
+    [exerciseId]: {
+      completedSets: number[], // indices of completed sets
+      currentWeight: number    // may differ from Supabase until sync
+    }
+  }
+}
 ```
 
 ### Extended Screen Types
@@ -73,21 +86,13 @@ Screen =
   | { name: 'done'; title: string }
 ```
 
-### Progress State
-```typescript
-WorkoutProgress = {
-  workoutId: 1|2
-  exercises: {
-    [exerciseId]: {
-      completedSets: number[]  // array of completed set indices
-      currentWeight: number    // updated weight for this exercise
-    }
-  }
-}
-```
-
 ## Implementation Notes
-- Use single-user app approach (no authentication needed)
-- Persist workout progress and updated weights to localStorage
-- Key localStorage keys: `workout-progress`, `exercise-weights-{workoutId}`
-- Handle app restoration from localStorage on startup
+- **Single-user approach**: No authentication needed
+- **Session persistence**: Save current workout progress to localStorage for crash recovery
+- **Weight updates**: Update Supabase immediately on weight change OR batch update on workout completion
+- **Data flow**: 
+  1. Load workout program from Supabase
+  2. Track progress in localStorage during session
+  3. On completion: sync changed weights to Supabase, clear localStorage
+  4. Calendar integration for completed workouts
+- **Offline support**: App works without internet during workout (sync weights later)
