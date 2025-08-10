@@ -12,18 +12,6 @@
   - Extend `Screen` types for timer and program screens
   - Add localStorage session data types
 
-### 1.2 WorkoutContext Extension
-- [ ] Extend `WorkoutContext` to manage:
-  - Current workout program (from mock data)
-  - Session progress (localStorage)
-  - Weight updates locally
-- [ ] Add methods:
-  - `loadWorkout(id)` - get program from mock data
-  - `saveProgress()`, `loadProgress()` - localStorage session
-  - `updateWeight(exerciseId, weight)` - local updates
-  - `completeWorkout()` - clear session, show done
-- [ ] Integrate localStorage for session persistence
-
 ## 🎯 Phase 2: Core Implementation
 
 ### 2.1 Selection Screen
@@ -43,6 +31,16 @@
 - [ ] Create component `src/components/ExerciseItem.tsx`
 - [ ] Create component `src/components/ProgressBar.tsx`
 - [ ] Progress update logic for completed sets
+- [ ] Extend `WorkoutContext` to manage:
+  - Current workout program (from mock data)
+  - Session progress (localStorage)
+  - Weight updates locally
+- [ ] Add methods:
+  - `loadWorkout(id)` - get program from mock data
+  - `saveProgress()`, `loadProgress()` - localStorage session
+  - `updateWeight(exerciseId, weight)` - local updates
+  - `completeWorkout()` - clear session, show done
+- [ ] Integrate localStorage for session persistence
 
 ### 2.3 Timer Screen
 - [ ] Create `src/pages/Timer.tsx`:
@@ -66,12 +64,10 @@
   - `src/components/Card.tsx` 
   - `src/components/Timer.tsx`
 - [ ] Responsive mobile layout
-- [ ] Dark/light theme (optional)
 
 ### 3.2 User Experience
 - [ ] Screen transition animations
 - [ ] Timer completion sound notifications
-- [ ] Haptic feedback (vibration)
 - [ ] Loading indicators
 
 ### 3.3 Error Handling & Edge Cases
@@ -128,20 +124,3 @@
 - [ ] Update README.md
 - [ ] Add screenshots to documentation
 - [ ] Update package.json metadata
-
-## ⚡ Dependencies & Execution Order
-
-**Critical Path:**
-1. Phase 1.1 → 1.2 (mock data and types needed for context)
-2. Phase 1.2 → 2.1-2.4 (context needed for all screens)
-3. Phases 2.1-2.4 → 3.1-3.2 (functionality before styling)
-4. All previous → Phase 4 (integration at the end)
-5. Phase 4 → Phase 5 (Supabase integration after all features work)
-6. Phase 5 → Phase 6 (production deployment)
-
-**Parallel Work:**
-- Screens 2.1-2.4 after context is ready
-- Styling 3.1 can run parallel with functionality
-- UX improvements 3.2 after basic functionality
-
-**Estimated Time:** 2-3 days of active development with phased approach.
