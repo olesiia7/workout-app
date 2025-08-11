@@ -12,7 +12,6 @@ export type Screen =
 
 export type SessionProgress = {
   workoutId: number;
-  currentExerciseIndex: number;
-  currentSetIndex: number;
+  completedSets: number; // total completed sets across all exercises
   updatedWeights: { [exerciseId: number]: number };
 };

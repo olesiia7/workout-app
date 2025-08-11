@@ -17,37 +17,22 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 **Note:** No test command is configured in package.json scripts.
 
-## Requirements
+## Project Overview
 
-See `requirements.md` for complete application specifications, data structure, and implementation details.
+This is a React TypeScript workout application using Vite as the build tool. 
 
-## Implementation Plan
+**Core functionality:** Single-user workout app where users select exercises (shoulders/glutes/correction), complete them one-by-one with progress tracking, and weight management. Progress persists in localStorage for session recovery.
 
-See `plan.md` for detailed phased implementation plan with tasks, dependencies, and timeline.
+**Architecture:** Screen-based navigation using React Context, CSS modules for styling, mock data for development.
 
-## Architecture
+## Documentation References
 
-This is a React TypeScript workout application using Vite as the build tool.
+- **Full App Logic & Structure**: See `requirements.md` for complete application flow, data structures, and UI behavior
+- **Implementation Checklist**: See `plan.md` for current status and detailed future development steps.
+**Important**: never use code snippets in documentation, use refferences only.
 
-### State Management
-The app uses React Context for state management via `WorkoutContext`:
-- **WorkoutProvider** (`src/store/WorkoutContext.tsx`): Manages navigation between screens and persists current screen to localStorage
-- **useWorkout** hook: Custom hook to access workout context safely with error checking
-- **usePersistedState** custom hook: Persists state to localStorage and restores on page load
-
-### Screen-Based Navigation
-The app follows a screen-based navigation pattern using discriminated unions:
-- Screen type defined in `src/types.ts` with variants: `select`, `program`, `rest`, `done`
-- Each screen has its own component in `src/pages/`
-- Navigation is controlled through the WorkoutContext's `navigate()` and `reset()` functions
-
-### Type Definitions
-Core types in `src/types.ts`:
-- **Screen**: Discriminated union defining all possible app screens with their data
-- **Option**: Workout selection options (shoulders, glutes, correction)
-
-### Project Structure
+## Project Structure
 - `src/store/` - Context providers and state management
-- `src/pages/` - Screen components (Select, Program, Rest, Done)
+- `src/pages/` - Screen components with CSS modules (Select, Program, Done)
+- `src/data/` - Mock data for exercises and workouts  
 - `src/types.ts` - TypeScript type definitions
-- Standard Vite + React setup with TypeScript

@@ -1,0 +1,269 @@
+.container {
+  padding: 20px;
+  color: #333;
+}
+
+.title {
+  color: #fff;
+  font-weight: bold;
+  font-size: 24px;
+  margin: 0 0 20px 0;
+}
+
+.progressSection {
+  margin-bottom: 20px;
+}
+
+.progressHeader {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.progressText {
+  color: #fff;
+  font-weight: 500;
+}
+
+.progressBar {
+  width: 100%;
+  height: 8px;
+  background-color: #e0e0e0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background-color: #6f42c1;
+  transition: width 0.3s ease;
+}
+
+.exerciseList {
+  margin-bottom: 20px;
+}
+
+.exerciseCard {
+  padding: 16px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  transform: translateY(0);
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+}
+
+.exerciseCard.active {
+  background-color: #fff;
+  border: 2px solid #6f42c1;
+  box-shadow: 0 4px 12px rgba(111, 66, 193, 0.3);
+  transform: scale(1.02);
+}
+
+.exerciseCard.completed {
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  opacity: 0.8;
+  transform: scale(0.98);
+}
+
+.exerciseInfo {
+  flex: 1;
+}
+
+.exerciseName {
+  margin: 0 0 4px 0;
+  color: #2c3e50;
+  font-size: 18px;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.exerciseCard.completed .exerciseName {
+  color: #6c757d;
+}
+
+.exerciseCard.active .exerciseName {
+  color: #6f42c1;
+}
+
+.exerciseDetails {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.setsReps {
+  color: #333;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.exerciseCard.completed .setsReps {
+  color: #868e96;
+}
+
+.exerciseCard.active .setsReps {
+  color: #333;
+  font-weight: 600;
+}
+
+.weightControls {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.weightButton {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  color: #333;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.weightButton:hover {
+  background-color: #f5f5f5;
+}
+
+.weightButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.weightDisplay {
+  min-width: 70px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.weightIcon {
+  font-size: 12px;
+}
+
+.weightIcon.increase {
+  color: #28a745;
+}
+
+.weightIcon.decrease {
+  color: #dc3545;
+}
+
+.restTime {
+  font-size: 12px;
+  color: #666;
+}
+
+.doneButton {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  background-color: #4caf50;
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  opacity: 1;
+  transform: scale(1);
+}
+
+.doneButton:hover:not(:disabled) {
+  background-color: #45a049;
+  transform: scale(1.05) translateY(-2px);
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.4);
+}
+
+.doneButton:active:not(:disabled) {
+  transform: scale(0.98);
+  transition: all 0.1s ease;
+}
+
+.doneButton:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  transform: scale(1);
+}
+
+.doneButton.completed {
+  background-color: #e8f5e8;
+  color: #2e7d32;
+  border: 1px solid #c8e6c8;
+  transform: scale(0.95);
+  animation: completeSuccess 0.6s ease-in-out;
+}
+
+@keyframes completeSuccess {
+  0% {
+    transform: scale(1);
+    background-color: #4caf50;
+  }
+  50% {
+    transform: scale(1.1);
+    background-color: #66bb6a;
+  }
+  100% {
+    transform: scale(0.95);
+    background-color: #e8f5e8;
+  }
+}
+
+.navigationButtons {
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.backButton {
+  padding: 12px 24px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f5f5f5;
+  color: #333;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.2s ease;
+}
+
+.backButton:hover {
+  background-color: #e8e8e8;
+}
+
+.completeButton {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 4px;
+  background-color: #6f42c1;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.completeButton:hover {
+  background-color: #5a2d91;
+}

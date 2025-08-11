@@ -1,0 +1,49 @@
+.container {
+  padding: 20px;
+  text-align: center;
+  color: #333;
+}
+
+.successIcon {
+  font-size: 80px;
+  margin-bottom: 20px;
+}
+
+.title {
+  color: #fff;
+  margin-bottom: 10px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.message {
+  color: #fff;
+  font-size: 18px;
+  margin-bottom: 40px;
+  line-height: 1.4;
+}
+
+.backButton {
+  padding: 16px 32px;
+  font-size: 18px;
+  border: none;
+  border-radius: 8px;
+  background-color: #4caf50;
+  color: white;
+  cursor: pointer;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 auto;
+  transition: all 0.2s ease;
+}
+
+.backButton:hover {
+  background-color: #45a049;
+  transform: translateY(-2px);
+}
+
+.buttonIcon {
+  font-size: 20px;
+}
