@@ -36,7 +36,7 @@ const Program: React.FC<ProgramScreenProps> = ({ workoutId }) => {
     return { exercise: null, currentSet: 0, isCompleted: true };
   };
 
-  const { exercise: currentExercise, currentSet, isCompleted } = getCurrentExerciseAndSet();
+  const { exercise: currentExercise, currentSet } = getCurrentExerciseAndSet();
 
   const isExerciseCompleted = (exercise: Exercise) => {
     let setsCount = 0;

@@ -6,7 +6,7 @@ interface DoneScreenProps {
   workoutId: number;
 }
 
-const Done: React.FC<DoneScreenProps> = ({ workoutId }) => {
+const Done: React.FC<DoneScreenProps> = ({ workoutId: _ }) => {
   const { navigate, currentWorkout } = useWorkout();
 
   const workoutName = currentWorkout?.name || 'тренировка';
