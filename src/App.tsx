@@ -4,6 +4,7 @@ import { WorkoutProvider, useWorkout } from './store/WorkoutContext';
 import Select from './pages/Select';
 import Program from './pages/Program';
 import Done from './pages/Done';
+import Timer from './pages/Timer';
 
 const AppContent: React.FC = () => {
   const { screen } = useWorkout();
@@ -16,8 +17,7 @@ const AppContent: React.FC = () => {
     case 'done':
       return <Done workoutId={screen.workoutId} />;
     case 'timer':
-      // Timer component not implemented yet
-      return <div>Timer: {screen.seconds}s</div>;
+      return <Timer seconds={screen.seconds} />;
     default:
       return <Select />;
   }

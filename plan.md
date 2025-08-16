@@ -25,9 +25,9 @@
 - ✅ **Mock Data**: Exercise definitions with equipment types and rest periods
 
 ### Timer Screen
-- [ ] Rest timer between sets
-- [ ] Pause/resume/skip functionality
-- [ ] Auto-return to program screen
+- ✅ Rest timer between sets
+- ✅ Pause/resume/skip functionality
+- ✅ Auto-return to program screen
 
 ### Advanced Features
 - [ ] Supabase integration for data persistence

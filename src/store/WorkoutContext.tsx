@@ -79,12 +79,46 @@ export const WorkoutProvider: React.FC<{ children: React.ReactNode }> = ({ child
   };
 
   const completeSet = () => {
-    if (!sessionProgress) return;
+    if (!sessionProgress || !currentWorkout) return;
+    
+    const newCompletedSets = sessionProgress.completedSets + 1;
     
     setSessionProgress({
       ...sessionProgress,
-      completedSets: sessionProgress.completedSets + 1
+      completedSets: newCompletedSets
     });
+
+    // Check if we should start a timer
+    const getExerciseInfo = () => {
+      let setsCount = 0;
+      for (const exercise of currentWorkout.exercises) {
+        const exerciseEndCount = setsCount + exercise.sets;
+        
+        // If we just completed a set that belongs to this exercise
+        if (sessionProgress.completedSets < exerciseEndCount && newCompletedSets <= exerciseEndCount) {
+          const isLastSetOfExercise = newCompletedSets === exerciseEndCount;
+          return { 
+            exercise, 
+            isLastSetOfExercise,
+            isLastSetOfWorkout: newCompletedSets === currentWorkout.exercises.reduce((sum, ex) => sum + ex.sets, 0)
+          };
+        }
+        setsCount = exerciseEndCount;
+      }
+      return null;
+    };
+
+    const exerciseInfo = getExerciseInfo();
+    
+    // Start timer if:
+    // 1. There's a rest period defined for the exercise we just completed a set for
+    // 2. It's NOT the last set of that exercise
+    // 3. It's NOT the last set of the entire workout
+    if (exerciseInfo?.exercise.relax_between && 
+        !exerciseInfo.isLastSetOfExercise && 
+        !exerciseInfo.isLastSetOfWorkout) {
+      navigate({ name: 'timer', seconds: exerciseInfo.exercise.relax_between });
+    }
   };
 
   const completeWorkout = () => {

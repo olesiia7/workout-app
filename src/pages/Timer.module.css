@@ -1,0 +1,145 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+  text-align: center;
+  background: linear-gradient(135deg, #8B5CF6 0%, #A78BFA 100%);
+}
+
+.title {
+  color: white;
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 3rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.timerDisplay {
+  margin-bottom: 3rem;
+}
+
+.progressRing {
+  position: relative;
+  width: 200px;
+  height: 200px;
+}
+
+.progressSvg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.progressBackground {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.2);
+  stroke-width: 8;
+  stroke-linecap: round;
+}
+
+.progressFill {
+  fill: none;
+  stroke: white;
+  stroke-width: 8;
+  stroke-linecap: round;
+  stroke-dasharray: 339.29;
+  transition: stroke-dashoffset 1s ease-in-out;
+}
+
+.timeText {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+}
+
+.controls {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.controlButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.controlButton:hover {
+  background: white;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.controlButton:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.pauseButton {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.skipButton {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.pausedIndicatorContainer {
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pausedIndicator {
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 500;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 0.75rem 1.5rem;
+  border-radius: 24px;
+  backdrop-filter: blur(10px);
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 1.75rem;
+    margin-bottom: 2rem;
+  }
+  
+  .progressRing {
+    width: 160px;
+    height: 160px;
+  }
+  
+  .timeText {
+    font-size: 2rem;
+  }
+  
+  .controls {
+    gap: 2rem;
+  }
+  
+  .controlButton {
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+  }
+}
